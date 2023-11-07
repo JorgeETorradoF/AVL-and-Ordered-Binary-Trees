@@ -103,13 +103,13 @@ bool AVLBinaryTree<T>::deleteNode(T value)
         break;
         }
       }
-    //ahora que tenemos el nodo, desde el papa miramos si el nodo es hijo derecho o izquierdo
+    // now I have the node, so lets check from the dad if its a right or left child
     if(value < dad->getData())
     {
       isRightChild = false; 
     }
-    //ya identifique si es derecho o no, ahora debo evaluar los 3 casos, hoja, 1 hijo o 2 hijos
-    //caso hoja
+    //I already know whether its left or right child, so let's evalute the 3 cases: no children, 1 child, 2 children
+    //case 0 children (leaf)
     if(isLeaf(auxNode))
     {
       if(this->root->getData() == value)
@@ -124,7 +124,7 @@ bool AVLBinaryTree<T>::deleteNode(T value)
           dad->deleteLeftChild();
       }
     }
-    //caso 1 hijo
+    //case 1 child
     if(auxNode->getLeftChild() == nullptr && auxNode->getRightChild() != nullptr)
     { 
       if(this->root->getData() == value)
@@ -161,7 +161,7 @@ bool AVLBinaryTree<T>::deleteNode(T value)
         }
       }
     }
-      //caso 2 hijos
+      //case 2 children
     if(auxNode->getLeftChild() != nullptr && auxNode->getRightChild() != nullptr)
     {
         T newValue = getBiggestData(auxNode->getLeftChild())->getData();
